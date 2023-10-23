@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:praktikum_uts/home_page.dart';
+import 'package:praktikum_uts/item.dart';
 import 'package:praktikum_uts/item_page.dart';
 
 void main() {
@@ -7,7 +8,10 @@ void main() {
     initialRoute: '/',
     routes: {
       '/': (context) => HomePage(),
-      '/item': (context) => ItemPage(),
+      '/item': (context) {
+        final item = ModalRoute.of(context)!.settings.arguments as Item;
+        return ItemPage(item: item);
     },
-  ));
+  },)
+  );
 }
