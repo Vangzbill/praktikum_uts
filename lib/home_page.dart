@@ -4,10 +4,17 @@ import 'package:praktikum_uts/item_page.dart';
 
 class HomePage extends StatelessWidget {
   final List<Item> items = [
-    Item(name: 'Gula', price: 5000, image: 'gula.png', stock: 100, rating: 4.5),
+    Item(
+        name: 'Gula', price: 10000, image: 'gula.png', stock: 100, rating: 4.5),
     Item(
         name: 'Garam', price: 2000, image: 'garam.png', stock: 50, rating: 3.9),
-    // Add more items with photo, stock, and rating here
+    Item(
+        name: 'Minyak',
+        price: 17000,
+        image: 'minyak.jpeg',
+        stock: 10,
+        rating: 4.8),
+    Item(name: 'Kopi', price: 1000, image: 'kopi.jpg', stock: 5, rating: 4.9),
   ];
 
   @override
@@ -35,26 +42,47 @@ class HomePage extends StatelessWidget {
                 );
               },
               child: Card(
+                elevation: 4,
                 child: Column(
                   children: [
                     Hero(
-                      tag:
-                          'itemImage${item.name}', // Set tag yang sama dengan yang ada di ItemPage
+                      tag: 'itemImage${item.name}',
                       child: Image.asset(
                         'assets/${item.image}',
-                        height: 100,
+                        height: 150,
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
+                    ListTile(
+                      title: Text(
                         item.name,
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Icon(Icons.attach_money),
+                              Text('Price: \ ${item.price.toString()}'),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Icon(Icons.inventory),
+                              Text('Stock: ${item.stock.toString()}'),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Icon(Icons.star),
+                              Text('Rating: ${item.rating.toString()}'),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
-                    Text('Price: \$${item.price.toString()}'),
-                    Text('Stock: ${item.stock.toString()}'),
-                    Text('Rating: ${item.rating.toString()}'),
                   ],
                 ),
               ),
@@ -64,7 +92,7 @@ class HomePage extends StatelessWidget {
       ),
       bottomNavigationBar: BottomAppBar(
         child: Padding(
-          padding: EdgeInsets.all(10.0), // Berikan padding 10 pixel
+          padding: EdgeInsets.all(10.0),
           child: Text(
             'Sabilla Luthfi Rahmadhan - NIM: 2141720122',
             textAlign: TextAlign.center,

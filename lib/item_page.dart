@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:praktikum_uts/item.dart';
 
@@ -19,23 +17,51 @@ class ItemPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Hero(
-              tag:
-                  'itemImage${item.name}', // Set tag yang sama dengan yang ada di HomePage
+              tag: 'itemImage${item.name}',
               child: Image.asset(
                 'assets/${item.image}',
                 height: 300,
               ),
             ),
-            Text('Item Name: ${item.name}'),
-            Text('Item Price: ${item.price.toString()}'),
-            Text('Item Stock: ${item.stock.toString()}'),
-            Text('Item Rating: ${item.rating.toString()}'),
+            SizedBox(height: 20), // Add spacing between image and text
+            Text(
+              'Item Name: ${item.name}',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 10), // Add spacing
+            Text(
+              'Item Price: \ ${item.price.toString()}',
+              style: TextStyle(fontSize: 18),
+            ),
+            SizedBox(height: 10),
+            Text(
+              'Item Stock: ${item.stock.toString()}',
+              style: TextStyle(fontSize: 18),
+            ),
+            SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.star,
+                  color: Colors.orange, // Customize the star icon color
+                  size: 24,
+                ),
+                Text(
+                  'Item Rating: ${item.rating.toString()}',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ],
+            ),
           ],
         ),
       ),
       bottomNavigationBar: BottomAppBar(
         child: Padding(
-          padding: EdgeInsets.all(10.0), // Berikan padding 10 pixel
+          padding: EdgeInsets.all(10.0),
           child: Text(
             'Sabilla Luthfi Rahmadhan - NIM: 2141720122',
             textAlign: TextAlign.center,
